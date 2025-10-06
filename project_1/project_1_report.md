@@ -1,10 +1,10 @@
 ## 1.1
 
 - **NMOS32 Testbench**  
-  ![](/project_1/nmos32_tb.png)
+  <img src="/project_1/nmos32_tb.png" alt="NMOS32 Testbench" width="600" />
 
 - **PMOS64 Testbench**  
-  ![](/project_1/pmos64_tb.png)
+  <img src="/project_1/pmos64_tb.png" alt="PMOS64 Testbench" width="600" />
 
 - **NMOS32 (Id/Vds)**  
   ![](/project_1/q1_1_nmos_id_vds.png)
