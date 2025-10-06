@@ -199,3 +199,47 @@ W_p^\star &= 2.4745 \times 32 = 79.18 \;\text{units} \\
 \end{aligned}
 $$
 
+![](/project_1/q3_3_drc.png)
+![](/project_1/q3_3_lvs.png)
+![](/project_1/q3_3_pex.png)
+![](/project_1/q3_3_tb&sim.png)
+![](/project_1/q3_3_wf.png)
+![](/project_1/q3_3_wf2.png)
+
+$$
+% 80/32 inverter — schematic vs. calibre (PEX), VDD = 1.0 V, C_L = 5 fF
+\begin{aligned}
+\textbf{Schematic:}\quad
+&V_{IL,s}=403.5~\text{mV},\;
+ V_{IH,s}=619.0~\text{mV},\;
+ V_{OH,s}=936.4~\text{mV},\;
+ V_{OL,s}=46.13~\text{mV},\\
+&\mathrm{NMH}_s=317.4~\text{mV},\;
+ \mathrm{NML}_s=357.4~\text{mV},\\
+&t_{pLH,s}=3.613~\text{ps},\;
+ t_{pHL,s}=2.787~\text{ps},\;
+ t_{pd,s}=3.200~\text{ps}.
+\\[4pt]
+\textbf{Calibre (PEX):}\quad
+&V_{IL,c}=397.1~\text{mV},\;
+ V_{IH,c}=608.6~\text{mV},\;
+ V_{OH,c}=938.9~\text{mV},\;
+ V_{OL,c}=44.10~\text{mV},\\
+&\mathrm{NMH}_c=330.2~\text{mV},\;
+ \mathrm{NML}_c=353.0~\text{mV},\\
+&t_{pLH,c}=5.768~\text{ps},\;
+ t_{pHL,c}=5.268~\text{ps},\;
+ t_{pd,c}=5.518~\text{ps}.
+\\[4pt]
+\textbf{Deltas (PEX − Schematics):}\quad
+&\Delta V_{IL}=-6.4~\text{mV},\;
+ \Delta V_{IH}=-10.4~\text{mV},\;
+ \Delta V_{OH}=+2.5~\text{mV},\;
+ \Delta V_{OL}=-2.03~\text{mV},\\
+&\Delta \mathrm{NMH}=+12.8~\text{mV},\;
+ \Delta \mathrm{NML}=-4.4~\text{mV},\\
+&\Delta t_{pLH}=+2.155~\text{ps},\;
+ \Delta t_{pHL}=+2.481~\text{ps},\;
+ \Delta t_{pd}=+2.318~\text{ps}\;(\approx 72\%~\text{slower}).
+\end{aligned}
+$$
