@@ -7,10 +7,13 @@
   ![](/project_1/pmos64_tb.png)
 
 - **NMOS32 (Id/Vds)**  
-  ![](/project_1/nmos32_iv.png)
+  ![](/project_1/q1_1_nmos_id_vds.png)
 
 - **PMOS64 (Id/Vds)**  
-  ![](/project_1/pmos64_iv.png)
+  ![](/project_1/q1_1_pmos_id_vds.png)
+
+- **Overlayed**
+  ![](/project_1/q1_1_id_vds_overlayed.png)
 
 ## 1.2
 
@@ -25,6 +28,55 @@
 
 - **PMOS32 (Id/Vgs)**  
   ![](/project_1/pmos32_iv_vds_id.png)
+
+#### Id–Vg family extraction (nMOS)
+
+| $V_{\mathrm{DS}}$ (V) | $V_t$ (V) | $S$ (mV/dec) |
+| --------------------: | --------: | -----------: |
+|                   0.0 |  0.084747 |       258.46 |
+|                   0.2 |   0.16549 |       102.39 |
+|                   0.4 |   0.14040 |       104.83 |
+|                   0.6 |   0.11771 |       107.31 |
+|                   0.8 |  0.096566 |       110.41 |
+|                   1.0 |  0.076405 |       115.55 |
+
+**nMOS summary.** 
+
+DIBL $=$ $111.4,\mathrm{mV/V}$ (between $V_{\mathrm{DS}}=$ 0.20 V and 1.00 V); $I_{\mathrm{off}}$ at $V_{\mathrm{GS}}=0$, $V_{\mathrm{DS}}=1.00\ \mathrm{V}$ is $6.38\times10^{-8}\ \mathrm{A}$.
+
+---
+
+#### Id–Vg family extraction (pMOS)
+
+| $V_{\mathrm{SD}}$ (V) | $V_t$ (V) | $S$ (mV/dec) |
+| --------------------: | --------: | -----------: |
+|                   0.0 | 0.0035463 |       314.41 |
+|                   0.2 |   0.18538 |       115.60 |
+|                   0.4 |   0.14963 |       119.94 |
+|                   0.6 |   0.11849 |       126.15 |
+|                   0.8 |  0.090297 |       133.99 |
+|                   1.0 |  0.063393 |       143.89 |
+
+**pMOS summary.** 
+
+DIBL $=$ $152.5,\mathrm{mV/V}$ (between $V_{\mathrm{SD}}=$ 0.20 V and 1.00 V); $\lvert I_{\mathrm{off}}\rvert$ at $V_{\mathrm{SG}}=0$, $V_{\mathrm{SD}}=1.00\ \mathrm{V}$ is $9.58\times10^{-8}\ \mathrm{A}$.
+
+#### Velocity-saturation + CLM model fit (W = 32)
+
+![](/project_1/q1_2_pmos_id_vds_fit.png)\
+![](/project_1/q1_2_nmos_id_vds_fit.png)
+
+| Device | $K$ | $\alpha$ | $V_T$ (V) | $V_{\mathrm{sat}}$ (V) | $\lambda$ (V$^{-1}$) |
+| :----- | ------: | -------: | --------: | ---------------------: | -------------------: |
+| nMOS   | 0.00551 |     1.29 |     0.339 |                  0.202 |                0.131 |
+| pMOS   | 0.00271 |     1.33 |     0.330 |                  0.302 |                0.156 |
+
+**Notes.**
+
+* $S$ increases mildly with drain bias, as expected for short-channel devices.
+* DIBL of $(\sim 111,\mathrm{mV/V})$ (nMOS) and $(\sim 153,\mathrm{mV/V})$ (pMOS) is consistent with the course material.
+* $V_t$ was extracted via the constant-current rule $0.1~\mu\mathrm{A}/\mu\mathrm{m}$ per device width; if low-$V_{\mathrm{DS}}$ sweeps do not reach the target current, $V_t$ can be cross-checked using the low-$V_{\mathrm{DS}}$ max-$g_m$ method.
+
   
 ## 2.1
 
@@ -207,7 +259,8 @@ $$
 ![](/project_1/q3_3_wf2.png)
 
 $$
-% 80/32 inverter — schematic vs. calibre (PEX), VDD = 1.0 V, C_L = 5 fF
+% 80/32 inverter
+% schematic vs. calibre (PEX), VDD = 1.0 V, C_L = 5 fF
 \begin{aligned}
 \textbf{Schematic:}\quad
 &V_{IL,s}=403.5~\text{mV},\;
