@@ -40,11 +40,9 @@
 |                   0.8 |  0.096566 |       110.41 |
 |                   1.0 |  0.076405 |       115.55 |
 
-**nMOS summary.** 
+**nMOS** 
 
 DIBL $=$ $111.4,\mathrm{mV/V}$ (between $V_{\mathrm{DS}}=$ 0.20 V and 1.00 V); $I_{\mathrm{off}}$ at $V_{\mathrm{GS}}=0$, $V_{\mathrm{DS}}=1.00\ \mathrm{V}$ is $6.38\times10^{-8}\ \mathrm{A}$.
-
----
 
 #### Id–Vg family extraction (pMOS)
 
@@ -57,13 +55,15 @@ DIBL $=$ $111.4,\mathrm{mV/V}$ (between $V_{\mathrm{DS}}=$ 0.20 V and 1.00 V); $
 |                   0.8 |  0.090297 |       133.99 |
 |                   1.0 |  0.063393 |       143.89 |
 
-**pMOS summary.** 
+**pMOS** 
 
 DIBL $=$ $152.5,\mathrm{mV/V}$ (between $V_{\mathrm{SD}}=$ 0.20 V and 1.00 V); $\lvert I_{\mathrm{off}}\rvert$ at $V_{\mathrm{SG}}=0$, $V_{\mathrm{SD}}=1.00\ \mathrm{V}$ is $9.58\times10^{-8}\ \mathrm{A}$.
 
 #### Velocity-saturation + CLM model fit (W = 32)
 
-![](/project_1/q1_2_pmos_id_vds_fit.png)\
+- **nMOS 32 Id–Vds matlab curve fit**
+![](/project_1/q1_2_pmos_id_vds_fit.png)
+- **nMOS 32 Id–Vds matlab curve fit**
 ![](/project_1/q1_2_nmos_id_vds_fit.png)
 
 | Device | $K$ | $\alpha$ | $V_T$ (V) | $V_{\mathrm{sat}}$ (V) | $\lambda$ (V$^{-1}$) |
@@ -71,17 +71,19 @@ DIBL $=$ $152.5,\mathrm{mV/V}$ (between $V_{\mathrm{SD}}=$ 0.20 V and 1.00 V); $
 | nMOS   | 0.00551 |     1.29 |     0.339 |                  0.202 |                0.131 |
 | pMOS   | 0.00271 |     1.33 |     0.330 |                  0.302 |                0.156 |
 
-**Notes.**
+**Thus**
 
 * $S$ increases mildly with drain bias, as expected for short-channel devices.
-* DIBL of $(\sim 111,\mathrm{mV/V})$ (nMOS) and $(\sim 153,\mathrm{mV/V})$ (pMOS) is consistent with the course material.
 * $V_t$ was extracted via the constant-current rule $0.1~\mu\mathrm{A}/\mu\mathrm{m}$ per device width; if low-$V_{\mathrm{DS}}$ sweeps do not reach the target current, $V_t$ can be cross-checked using the low-$V_{\mathrm{DS}}$ max-$g_m$ method.
 
   
 ## 2.1
 
+- **Testbench and simulation**
 ![](/project_1/q2_1_tb&sim_trans.png)
+- **Parameter sweep simulation**
 ![](/project_1/q2_1_tb&sim_pa.png)
+- **Waveform for best-fit Cdelay**
 ![](/project_1/q2_1_wf_pa.png)
 
 from the Cdelay parameter sweep, when **td_diff = 0**, **Cdelay ≈ 9.343 fF**, which is the effective gate cap of the DUT.
@@ -127,6 +129,7 @@ $$
 
 ## Q2.3
 
+- **Testbench and simulation (without X1/X2)**
 ![](/project_1/q2_3_tb&sim.png)
 
 * Shaped input (with X1/X2):
@@ -137,7 +140,7 @@ $$
 ### % change in average delay
 
 $$
-%\Delta t_{pd}=\frac{t_{pd,\text{step}}-t_{pd,\text{shaped}}}{|t_{pd,\text{shaped}}|}\times100\%
+\Delta t_{pd}=\frac{t_{pd,\text{step}}-t_{pd,\text{shaped}}}{|t_{pd,\text{shaped}}|}\times100\
 = \frac{(-13.70)-(-19.50)}{19.50}\times100\%
 \approx \boxed{+29.7\%}
 $$
@@ -145,6 +148,7 @@ So the DUT is ~29.7% faster (smaller |tpd|) with the step input.
 
 ## Q2.4
 
+- **Testbench and simulation (without X6/X7)**
 ![](/project_1/q2_4_tb&sim.png)
 
 * tpdf = −21.69 ps, tpdr = −17.33 ps, tpd = −19.51 ps
@@ -160,6 +164,7 @@ so essentially no change, which is exactly what we expect if the DUT sees the sa
 
 ## Q2.5
 
+- **Testbench and simulation (FO4 vs FO5)**
 ![](/project_1/q2_5_tb&sim.png)
 
 * **FO4, step input (no X1/X2):**
@@ -212,6 +217,7 @@ $$
 
 ## Q3.1
 
+- **Testbench and simulation (64:32 inverter)**
 ![](/project_1/q3_1_tb&sim.png)
 
 $$
@@ -228,7 +234,9 @@ $$
 
 ## Q3.2
 
+- **Testbench and simulation (optimal Wp/Wn = 2.5)**
 ![](/project_1/q3_2_tb&sim.png)
+- **Waveform**
 ![](/project_1/q3_2_wf.png)
 
 $$
@@ -251,11 +259,18 @@ W_p^\star &= 2.4745 \times 32 = 79.18 \;\text{units} \\
 \end{aligned}
 $$
 
+#### Layout and post-layout simulation of 80:32 inverter
+- **DRC**
 ![](/project_1/q3_3_drc.png)
+- **LVS**
 ![](/project_1/q3_3_lvs.png)
+- **PEX**
 ![](/project_1/q3_3_pex.png)
+- **Schematic vs. Calibre (PEX) Testbench and simulation**
 ![](/project_1/q3_3_tb&sim.png)
+- **Waveform**
 ![](/project_1/q3_3_wf.png)
+- **Waveform zoomed**
 ![](/project_1/q3_3_wf2.png)
 
 $$
