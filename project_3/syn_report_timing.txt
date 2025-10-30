@@ -1,0 +1,43 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : multiplier
+Version: N-2017.09
+Date   : Thu Oct 30 15:35:33 2025
+****************************************
+
+Operating Conditions: WCCOM   Library: tcbn65gpluswc
+Wire Load Model Mode: segmented
+
+  Startpoint: A[0] (input port)
+  Endpoint: product[6] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  multiplier         ZeroWireload          tcbn65gpluswc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  A[0] (in)                                0.00       0.00 f
+  U43/Z (CKAN2D0)                          0.06       0.06 f
+  U47/ZN (OAI21D0)                         0.06       0.13 r
+  U54/S (FA1D0)                            0.17       0.29 f
+  U64/CO (FA1D0)                           0.16       0.45 f
+  U66/CO (FA1D0)                           0.17       0.62 f
+  U59/ZN (INVD0)                           0.03       0.65 r
+  U62/ZN (MUX2ND0)                         0.04       0.69 f
+  U72/CO (FA1D0)                           0.17       0.86 f
+  U82/ZN (XNR3D0)                          0.17       1.04 r
+  product[6] (out)                         0.00       1.04 r
+  data arrival time                                   1.04
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

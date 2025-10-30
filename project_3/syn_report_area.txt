@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : multiplier
+Version: N-2017.09
+Date   : Thu Oct 30 15:35:33 2025
+****************************************
+
+Library(s) Used:
+
+    tcbn65gpluswc (File: /CMC/kits/tsmc_65nm_libs/tcbn65gplus/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65gplus_140b/tcbn65gpluswc.db)
+
+Number of ports:                           16
+Number of nets:                            53
+Number of cells:                           40
+Number of combinational cells:             40
+Number of sequential cells:                 0
+Number of macros/black boxes:               0
+Number of buf/inv:                          8
+Number of references:                      16
+
+Combinational area:                113.400002
+Buf/Inv area:                        8.640000
+Noncombinational area:               0.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                   113.400002
+Total area:                 undefined
+1
