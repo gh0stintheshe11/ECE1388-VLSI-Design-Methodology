@@ -95,7 +95,7 @@ endmodule
 ### Q1.2 verilog code simulation
 
 ```bash
-ug253:~/ece1388/pj3/FEOL% ncverilog testbench.v multiplier.v
+ug253:~/ece1388/pj3% ncverilog testbench.v multiplier.v
 ncverilog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 file: multiplier.v
 	module worklib.multiplier:v
@@ -232,7 +232,7 @@ Total area:                 undefined
 ### Q2.3 post synthesis simulation
 
 ```bash
-ug253:~/ece1388/pj3/FEOL% ncverilog testbench.v multiplier_syn.v tcbn65gplus.v
+ug253:~/ece1388/pj3% ncverilog testbench.v multiplier_syn.v tcbn65gplus.v
 ncverilog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 file: multiplier_syn.v
 	module worklib.multiplier:v
@@ -279,5 +279,82 @@ ncsim> run
 Test Completed without Errors! :)
 ncsim: *W,RNQUIE: Simulation is complete.
 ncsim> exit
-ug253:~/ece1388/pj3/FEOL% 
+```
+
+### Q3.9 
+
+### Q3.10
+
+- area report from Innovus summary
+
+```txt
+==============================
+Floorplan/Placement Information
+==============================
+Total area of Standard cells: 163.800 um^2  
+Total area of Standard cells(Subtracting Physical Cells): 113.400 um^2  
+Total area of Macros: 0.000 um^2  
+Total area of Blockages: 0.000 um^2  
+Total area of Pad cells: 0.000 um^2  
+Total area of Core: 163.800 um^2  
+Total area of Chip: 163.800 um^2  
+Effective Utilization: 1.0000e+00  
+Number of Cell Rows: 7  
+% Pure Gate Density #1 (Subtracting BLOCKAGES): 100.000%  
+% Pure Gate Density #2 (Subtracting BLOCKAGES and Physical Cells): 69.231%  
+% Pure Gate Density #3 (Subtracting MACROS): 100.000%  
+% Pure Gate Density #4 (Subtracting MACROS and Physical Cells): 69.231%  
+% Pure Gate Density #5 (Subtracting MACROS and BLOCKAGES): 100.000%  
+% Pure Gate Density #6 (Subtracting MACROS and BLOCKAGES for insts are not placed): 69.231%  
+% Core Density (Counting Std Cells and MACROs): 100.000%  
+% Core Density #2(Subtracting Physical Cells): 69.231%  
+% Chip Density (Counting Std Cells and MACROs and IOs): 100.000%  
+% Chip Density #2(Subtracting Physical Cells): 69.231%  
+# Macros within 5 sites of IO pad: No  
+Macro halo defined?: No  
+```
+
+- **area from Innovus: 163.800 um^2**
+- **area from Synopsys synthesis: 113.400002 um^2**
+
+### Q3.11 Layout
+
+- Innovus design layout with clean geometry check
+
+![Layout](/project_3/innovus_layout_no_viols.png)
+
+### Q3.12
+
+```bash
+ug253:~% cd ece1388/pj3
+ug253:~/ece1388/pj3% ncverilog testbench.v multiplier_netlist.v tcbn65gplus.v
+ncverilog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+file: multiplier_netlist.v
+	module worklib.multiplier:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                870     846
+		UDPs:                  1394       4
+		Primitives:            3658      10
+		Timing outputs:          56      29
+		Registers:              353     355
+		Scalar wires:           361       -
+		Expanded wires:           8       2
+		Always blocks:           56      56
+		Initial blocks:           1       1
+		Timing checks:         4170       -
+		Simulation timescale:   1ps
+	Writing initial simulation snapshot: worklib.testbench:v
+Loading snapshot worklib.testbench:v .................... Done
+ncsim> source /CMC/tools/cadence/INCISIVE15.20.079_lnx86/tools/inca/files/ncsimrc
+ncsim> run
+Test Completed without Errors! :)
+ncsim: *W,RNQUIE: Simulation is complete.
+ncsim> exit
 ```
