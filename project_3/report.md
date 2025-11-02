@@ -10,17 +10,17 @@ module multiplier(
     output [7:0] product // 8-bit product
 );
 
-    // Internal wires for partial products
+    // wires for partial products
     wire [3:0] pp0, pp1, pp2, pp3; // partial products
-    
-    // Internal wires for carry and sum connections
-    wire c1_0, c1_1, c1_2, c1_3;  // carry outputs from first row
-    wire c2_0, c2_1, c2_2, c2_3;  // carry outputs from second row
-    wire c3_0, c3_1, c3_2, c3_3;  // carry outputs from third row
-    wire s1_0, s1_1, s1_2;        // sum outputs from first row
-    wire s2_0, s2_1, s2_2;        // sum outputs from second row
-    
-    // Generate partial products using AND gates
+
+    // wires for carry and sum connections
+    wire c1_0, c1_1, c1_2, c1_3;  // carry from first row
+    wire c2_0, c2_1, c2_2, c2_3;  // carry from second row
+    wire c3_0, c3_1, c3_2, c3_3;  // carry from third row
+    wire s1_0, s1_1, s1_2;        // sum from first row
+    wire s2_0, s2_1, s2_2;        // sum from second row
+
+    // partial products using AND gates
     // pp0 = A & B[0]
     assign pp0[0] = A[0] & B[0];
     assign pp0[1] = A[1] & B[0];
@@ -48,13 +48,13 @@ module multiplier(
     // First output bit
     assign product[0] = pp0[0];
     
-    // First row of adders (add pp0 and pp1)
+    // first row of adders (add pp0 and pp1)
     half_adder ha1(pp0[1], pp1[0], product[1], c1_0);
     full_adder fa1(pp0[2], pp1[1], c1_0, s1_0, c1_1);
     full_adder fa2(pp0[3], pp1[2], c1_1, s1_1, c1_2);
     half_adder ha2(pp1[3], c1_2, s1_2, c1_3);  // c1_3 is separate output
-    
-    // Second row of adders (add previous sum with pp2)
+
+    // second row of adders (add previous sum with pp2)
     half_adder ha3(s1_0, pp2[0], product[2], c2_0);
     full_adder fa3(s1_1, pp2[1], c2_0, s2_0, c2_1);
     full_adder fa4(s1_2, pp2[2], c2_1, s2_1, c2_2);
@@ -141,6 +141,8 @@ ncsim> exit
 ![Synthesis](/project_3/synthesis.png)
 
 - exported synthesized schematic
+
+    *this is a high resolution image, please zoom in for details*
 
 ![Synthesized Schematic](/project_3/schematic.jpg)
 
@@ -283,6 +285,25 @@ ncsim> exit
 
 ### Q3.9 
 
+- power analysis from Innovus power report
+
+| frequency | internal power | switching power | total power | leakage power |
+| --------- | -------------- | --------------- | ----------- | ------------- |
+| 100 MHz   | 0.002028       | 0.0006917       | 0.003512    | 0.0007924     |
+| 200 MHz   | 0.004056       | 0.001383        | 0.006232    | 0.0007924     |
+| 300 MHz   | 0.006084       | 0.002075        | 0.008952    | 0.0007924     |
+| 400 MHz   | 0.008112       | 0.002767        | 0.01167     | 0.0007924     |
+| 500 MHz   | 0.01014        | 0.003459        | 0.01439     | 0.0007924     |
+| 600 MHz   | 0.01217        | 0.00415         | 0.01711     | 0.0007924     |
+| 700 MHz   | 0.0142         | 0.004842        | 0.01983     | 0.0007924     |
+| 800 MHz   | 0.01622        | 0.005534        | 0.02255     | 0.0007924     |
+| 900 MHz   | 0.01825        | 0.006225        | 0.02527     | 0.0007924     |
+| 1000 MHz  | 0.02028        | 0.006917        | 0.02799     | 0.0007924     |
+
+-  total internal power and total switching power vs. frequency
+
+![Power vs Frequency](/project_3/power_vs_freq_plot.png)
+
 ### Q3.10
 
 - area report from Innovus summary
@@ -316,6 +337,8 @@ Macro halo defined?: No
 
 - **area from Innovus: 163.800 um^2**
 - **area from Synopsys synthesis: 113.400002 um^2**
+
+The synthesizer only counts the accumulated standard cell area. It does not account for power lines, internal routings, and spacing between cells that are need for layout drc. These areas are counted in the Innovus layout area report, which is why the Innovus area is larger than the synthesis area. To confirm this, the Innovus report shows the "Total area of Standard cells(Subtracting Physical Cells): 113.400 um^2", which matches the synthesis area of 113.400002 um^2.
 
 ### Q3.11 Layout
 
