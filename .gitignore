@@ -1,3 +1,4 @@
 .DS_Store
 # CAN MAC STOP SHITTING EVERYWHERE
 .venv
+.tar.gz
